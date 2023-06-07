@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://btp672xitj7jx"]
+
+[ext_resource type="PackedScene" uid="uid://dfv0c58hqockr" path="res://Settings/Setting Item.tscn" id="1_0jt10"]
+
+[node name="Setting Item - Control Rebind" instance=ExtResource("1_0jt10")]
+
+[node name="Button" type="Button" parent="HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Key"
