@@ -1,0 +1,142 @@
+[gd_scene load_steps=4 format=3 uid="uid://chxw5biq2gvta"]
+
+[ext_resource type="PackedScene" uid="uid://dfv0c58hqockr" path="res://Settings/Setting Item.tscn" id="1_1qimd"]
+[ext_resource type="Script" path="res://Settings/Settings.gd" id="1_77im6"]
+[ext_resource type="PackedScene" uid="uid://btp672xitj7jx" path="res://Settings/Setting Item - Control Rebind.tscn" id="1_w4gnj"]
+
+[node name="Settings" type="ReferenceRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+border_width = 3.0
+script = ExtResource("1_77im6")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 64.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Controls" type="ScrollContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Items" type="VBoxContainer" parent="TabContainer/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Template" parent="TabContainer/Controls/Items" instance=ExtResource("1_w4gnj")]
+layout_mode = 2
+
+[node name="Display" type="ScrollContainer" parent="TabContainer"]
+layout_mode = 2
+
+[node name="Items" type="VBoxContainer" parent="TabContainer/Display"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Resolution" parent="TabContainer/Display/Items" instance=ExtResource("1_1qimd")]
+layout_mode = 2
+
+[node name="Label" parent="TabContainer/Display/Items/Resolution" index="1"]
+text = "Resolution"
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Display/Items/Resolution/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 1
+selected = 0
+popup/item_0/text = "1920 x 1080"
+popup/item_0/id = 0
+
+[node name="Mode" parent="TabContainer/Display/Items" instance=ExtResource("1_1qimd")]
+layout_mode = 2
+
+[node name="Label" parent="TabContainer/Display/Items/Mode" index="1"]
+text = "Fullscreen"
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Display/Items/Mode/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 2
+selected = 0
+popup/item_0/text = "Windowed"
+popup/item_0/id = 0
+popup/item_1/text = "Fullscreen"
+popup/item_1/id = 1
+
+[node name="Target FPS" parent="TabContainer/Display/Items" instance=ExtResource("1_1qimd")]
+layout_mode = 2
+
+[node name="Label" parent="TabContainer/Display/Items/Target FPS" index="1"]
+text = "Target FPS"
+
+[node name="OptionButton" type="OptionButton" parent="TabContainer/Display/Items/Target FPS/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 1
+selected = 0
+popup/item_0/text = "VSync"
+popup/item_0/id = 0
+
+[node name="Adjustments" parent="TabContainer/Display/Items" instance=ExtResource("1_1qimd")]
+layout_mode = 2
+
+[node name="VSeparator" parent="TabContainer/Display/Items/Adjustments" index="0"]
+theme_override_constants/separation = 2
+
+[node name="Label" parent="TabContainer/Display/Items/Adjustments" index="1"]
+text = "Adjustments"
+
+[node name="Brightness" parent="TabContainer/Display/Items" instance=ExtResource("1_1qimd")]
+layout_mode = 2
+
+[node name="Label" parent="TabContainer/Display/Items/Brightness" index="1"]
+text = "Brightness"
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Display/Items/Brightness/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 50.0
+
+[node name="Constrast" parent="TabContainer/Display/Items" instance=ExtResource("1_1qimd")]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Display/Items/Constrast/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 50.0
+
+[node name="Saturation" parent="TabContainer/Display/Items" instance=ExtResource("1_1qimd")]
+layout_mode = 2
+
+[node name="Label" parent="TabContainer/Display/Items/Saturation" index="1"]
+text = "Saturation"
+
+[node name="HSlider" type="HSlider" parent="TabContainer/Display/Items/Saturation/HBoxContainer" index="0"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+value = 50.0
+
+[connection signal="item_selected" from="TabContainer/Display/Items/Resolution/HBoxContainer/OptionButton" to="." method="_on_set_resolution"]
+[connection signal="item_selected" from="TabContainer/Display/Items/Mode/HBoxContainer/OptionButton" to="." method="_on_set_display_mode"]
+[connection signal="item_selected" from="TabContainer/Display/Items/Target FPS/HBoxContainer/OptionButton" to="." method="_on_set_fps"]
+
+[editable path="TabContainer/Display/Items/Resolution"]
+[editable path="TabContainer/Display/Items/Mode"]
+[editable path="TabContainer/Display/Items/Target FPS"]
+[editable path="TabContainer/Display/Items/Adjustments"]
+[editable path="TabContainer/Display/Items/Brightness"]
+[editable path="TabContainer/Display/Items/Constrast"]
+[editable path="TabContainer/Display/Items/Saturation"]
