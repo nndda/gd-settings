@@ -1,0 +1,26 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfv0c58hqockr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3vqg1"]
+
+[node name="Setting Item" type="HBoxContainer"]
+
+[node name="VSeparator" type="VSeparator" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 12
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3vqg1")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+text = "Setting Label"
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VSeparator2" type="VSeparator" parent="."]
+layout_mode = 2
+theme_override_constants/separation = 8
+theme_override_styles/separator = SubResource("StyleBoxEmpty_3vqg1")
